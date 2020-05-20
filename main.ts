@@ -1,6 +1,7 @@
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     otherSprite.destroy(effects.disintegrate, 500)
     info.changeLifeBy(1)
+    music.magicWand.play()
     if (info.life() > 10) {
         info.changeLifeBy(-1)
     }
@@ -9,12 +10,15 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
     if (controller.A.isPressed()) {
         otherSprite.setVelocity(0, 0)
         otherSprite.destroy(effects.disintegrate, 500)
+        music.powerUp.play()
         info.changeScoreBy(1)
         info.changeLifeBy(-1)
     }
 })
 info.onLifeZero(function () {
     game.over(false, effects.bubbles)
+    music.stopAllSounds()
+    music.playMelody("F D C E G A D C ", 60)
 })
 let fish: Sprite = null
 let worms: Sprite = null
@@ -39,133 +43,13 @@ let rod = sprites.create(img`
 `, SpriteKind.Player)
 controller.moveSprite(rod)
 rod.setFlag(SpriteFlag.StayInScreen, true)
-let line = sprites.create(img`
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-6 
-`, SpriteKind.Enemy)
-line.setPosition(0, 60)
 info.setScore(0)
 info.setLife(10)
 game.onUpdateInterval(100, function () {
     effects.bubbles.startScreenEffect(5000)
+})
+forever(function () {
+    music.playMelody("C E F C5 G E C F ", 120)
 })
 game.onUpdateInterval(3000, function () {
     worms = sprites.createProjectileFromSide(img`
