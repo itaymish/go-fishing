@@ -512,6 +512,11 @@ f 4 4 4 4 4 1 4 4 f 4 4 d f f f
 . . 6 6 6 6 6 6 6 6 6 6 6 6 . . 
 `)
     game.splash("Go Fishing", "Press A")
+    if (game.ask("Do you know how to play?", "A-YES B-NO") && controller.A.isPressed()) {
+        game.showLongText("You need to catch fish. To catch them, you need to press A. Every fish that you catch", DialogLayout.Full)
+    } else {
+        game.showLongText("Well, good luck!", DialogLayout.Full)
+    }
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     otherSprite.destroy(effects.disintegrate, 500)
