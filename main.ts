@@ -2,10 +2,7 @@
  * Better Translate
  */
 /**
- * PreAlpha Version
- */
-/**
- * Better Translate
+ * Alpha Version
  */
 function prestart () {
     scene.setBackgroundImage(img`
