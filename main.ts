@@ -1,4 +1,7 @@
 /**
+ * Better Translate
+ */
+/**
  * PreAlpha Version
  */
 /**
