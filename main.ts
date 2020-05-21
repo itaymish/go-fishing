@@ -513,7 +513,7 @@ f 4 4 4 4 4 1 4 4 f 4 4 d f f f
 `)
     game.splash("Go Fishing", "Press A")
     if (game.ask("Do you know how to play?", "A-NO B-YES") && controller.A.isPressed()) {
-        game.showLongText("You need to catch fish. To catch them, you need to press A. You'll get one point for every fish that you catch, but your energy will drop. The hearts are energy. You'll see cans in the sea - those cans bring you energy. To catch fish, press A. To catch fish, just put the rod on the cans. You can't collect more then 10 energy. Well, thats all. Good luck!", DialogLayout.Full)
+        game.showLongText("You need to catch fish. To catch them, you need to press A. You'll get one point for every fish that you catch, but your energy will drop. The hearts are energy. You'll see cans in the sea, those cans bring you energy. To catch fish, press A. To catch can, just put the rod on the can. You can't collect more then 10 energy. Well, thats all. Good luck!", DialogLayout.Full)
     } else {
         game.showLongText("Well, good luck!", DialogLayout.Full)
     }
