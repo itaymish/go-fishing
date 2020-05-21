@@ -512,7 +512,7 @@ f 4 4 4 4 4 1 4 4 f 4 4 d f f f
 . . 6 6 6 6 6 6 6 6 6 6 6 6 . . 
 `)
     game.splash("Go Fishing", "Press A")
-    if (game.ask("Do you know how to play?", "A-YES B-NO") && controller.A.isPressed()) {
+    if (game.ask("Do you know how to play?", "A-NO B-YES") && controller.A.isPressed()) {
         game.showLongText("You need to catch fish. To catch them, you need to press A. Every fish that you catch", DialogLayout.Full)
     } else {
         game.showLongText("Well, good luck!", DialogLayout.Full)
@@ -540,6 +540,7 @@ info.onLifeZero(function () {
     music.stopAllSounds()
     music.playMelody("F D C E G A D C ", 60)
 })
+let fish2: Sprite = null
 let fish: Sprite = null
 let worms: Sprite = null
 prestart()
@@ -614,4 +615,23 @@ f 4 4 4 4 4 1 4 4 f 4 4 d f f f
 . . . . . . . . . . . . . . . . 
 `, -50, 0)
     fish.setPosition(160, Math.randomRange(0, 120))
+    fish2 = sprites.createProjectileFromSide(img`
+. . . . . . . . c c c c c . . . 
+. . . . . . c c 5 5 5 5 5 c . . 
+. . . . . c 5 5 5 5 5 5 5 5 c . 
+. . . . c b b b b b b 5 5 5 c . 
+. . . . c 1 1 b b 1 b b c c . . 
+. . . c 1 1 1 b b 1 1 1 c . . . 
+. . . c 1 1 1 1 b 1 1 1 c . c c 
+. . . c d 1 1 1 b 1 1 1 b b 5 c 
+. . c c d 1 c 1 b 1 b 1 5 5 5 c 
+. c c d d 1 1 1 1 1 b 1 b b 5 c 
+f d d d 1 1 1 1 1 b b 1 f . c c 
+f f f 1 1 1 1 1 1 b b b f . . . 
+. . . f f 1 1 1 b b b 5 5 f . . 
+. . . . . f f f 5 5 5 5 5 f . . 
+. . . . . . . . f f f f f f . . 
+. . . . . . . . . . . . . . . . 
+`, -50, 0)
+    fish2.setPosition(160, Math.randomRange(0, 120))
 })
